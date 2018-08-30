@@ -1,0 +1,6 @@
+.autotools
+.cproject
+.settings
+build
+.project
+.vscode
