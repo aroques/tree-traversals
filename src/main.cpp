@@ -10,12 +10,14 @@ int main(int argc, char* argv[])
 
     if (argc > 2)
     {
-        perror("Too many arguments");
+        std::cout << "Too many arguments." << std::endl;
+        std::exit(EXIT_FAILURE);
     }
     if (argc == 2) 
     {
         // Filename provided in argv[1]
         file = open_file(argv);
+
         std::cin.rdbuf(file.rdbuf());
     }
 
@@ -38,5 +40,12 @@ std::ifstream open_file(char* argv[])
     std::string filename = argv[1];
     filename += ".fs182";
     std::ifstream file(filename);
+
+    if (!file.is_open())
+    {
+        std::cout << "Failed to open file." << std::endl;
+        std::exit(EXIT_FAILURE);
+    }
+
     return file;
 }
