@@ -17,7 +17,6 @@ int main(int argc, char* argv[])
     {
         // Filename provided in argv[1]
         file = open_file(argv);
-
         std::cin.rdbuf(file.rdbuf());
     }
 
