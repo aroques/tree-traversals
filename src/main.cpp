@@ -13,7 +13,6 @@ void print_bst_traversals(BST bst);
 
 int main(int argc, char* argv[])
 {
-
     validate_argc(argc);
 
     std::vector<std::string> strings = get_strings(argc, argv);
