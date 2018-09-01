@@ -12,6 +12,8 @@ public:
     void print_inorder();
     void print_postorder();
 
+    BST(std::vector<std::string> strings);
+
 private:
     // Member variables
     struct Node* root = NULL;

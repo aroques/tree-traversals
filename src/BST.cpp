@@ -62,6 +62,12 @@ void BST::print_postorder()
     }
 }
 
+// Constructor
+BST::BST(std::vector<std::string> strings)
+{
+    for (auto str : strings) { insert(str); };
+}
+
 /*
     Private
 */

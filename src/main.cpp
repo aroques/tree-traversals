@@ -9,7 +9,6 @@
 void validate_argc(int argc);
 std::vector<std::string> get_strings(int argc, char* argv[]);
 std::ifstream open_file(char* argv[]);
-BST build_bst(std::vector<std::string> strings);
 void print_bst_traversals(BST bst);
 
 int main(int argc, char* argv[])
@@ -19,7 +18,7 @@ int main(int argc, char* argv[])
 
     std::vector<std::string> strings = get_strings(argc, argv);
     
-    BST bst = build_bst(strings);
+    BST bst = BST(strings);
 
     print_bst_traversals(bst);
 
@@ -79,15 +78,6 @@ std::ifstream open_file(char* argv[])
     }
 
     return file;
-}
-
-BST build_bst(std::vector<std::string> strings)
-{
-    BST bst;
-
-    for (auto str : strings) { bst.insert(str); };
-
-    return bst;
 }
 
 void print_bst_traversals(BST bst)
