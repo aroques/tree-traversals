@@ -4,14 +4,14 @@
 #include <string>
 #include <vector>
 
-struct node
+struct Node
 {
     char key;
     std::vector<std::string> values;
-    node* left;
-    node* right;
+    struct Node* left;
+    struct Node* right;
 };
 
-struct node* new_node(std::string item);
+struct Node* new_node(std::string item);
 
 #endif // !NODE_HPP

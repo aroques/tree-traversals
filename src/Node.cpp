@@ -1,8 +1,8 @@
-#include "node.hpp"
+#include "Node.hpp"
 
-struct node* new_node(std::string item)
+struct Node* new_node(std::string item)
 {
-    struct node* temp =  new struct node();
+    struct Node* temp =  new struct Node();
     temp->key = item.front();
     temp->values.push_back(item);
     temp->left = temp->right = NULL;

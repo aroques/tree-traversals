@@ -1,7 +1,7 @@
 #ifndef BST_HPP
 #define BST_HPP
 
-#include "node.hpp"
+#include "Node.hpp"
 
 class BST
 {
@@ -17,16 +17,16 @@ public:
 
 private:
     // Member variables
-    struct node* root;
+    struct Node* root;
 
     // Functions
-    struct node* insert(struct node* node, std::string str);
+    struct Node* insert(struct Node* node, std::string str);
     
-    void preorder(struct node *root, std::string indentation);
-    void inorder(struct node *root, std::string indentation);
-    void postorder(struct node *root, std::string indentation);
+    void preorder(struct Node *root, std::string indentation);
+    void inorder(struct Node *root, std::string indentation);
+    void postorder(struct Node *root, std::string indentation);
     
-    void print_node(struct node* n, std::string indentation);
+    void print_node(struct Node* n, std::string indentation);
 
 };
 

@@ -79,7 +79,7 @@ BST::~BST()
 */
 
 // Private recursive insert
-struct node* BST::insert(struct node* node, std::string str)
+struct Node* BST::insert(struct Node* node, std::string str)
 {
     if (node == NULL)
     {
@@ -106,7 +106,7 @@ struct node* BST::insert(struct node* node, std::string str)
 }
 
 // Private recursive preorder traversal
-void BST::preorder(struct node *n, std::string indentation)
+void BST::preorder(struct Node *n, std::string indentation)
 {
     if (n != NULL)
     {
@@ -119,7 +119,7 @@ void BST::preorder(struct node *n, std::string indentation)
 }
 
 // Private recursive inorder traversal
-void BST::inorder(struct node *n, std::string indentation)
+void BST::inorder(struct Node *n, std::string indentation)
 {
     if (n != NULL)
     {
@@ -132,7 +132,7 @@ void BST::inorder(struct node *n, std::string indentation)
 }
 
 // Private recursive postorder traversal
-void BST::postorder(struct node *n, std::string indentation)
+void BST::postorder(struct Node *n, std::string indentation)
 {
     if (n != NULL)
     {
@@ -144,7 +144,7 @@ void BST::postorder(struct node *n, std::string indentation)
     }
 }
 
-void BST::print_node(struct node* n, std::string indentation)
+void BST::print_node(struct Node* n, std::string indentation)
 {
     std::cout << indentation << n->key << std::endl;
     for(auto val : n->values)
