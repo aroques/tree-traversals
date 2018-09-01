@@ -1,8 +1,13 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
+
+#include "BST.hpp"
+#include "string_split.hpp"
 
 // Prototypes
 std::ifstream open_file(char* argv[]);
+BST build_bst();
 
 int main(int argc, char* argv[])
 {
@@ -13,23 +18,20 @@ int main(int argc, char* argv[])
         std::cout << "Too many arguments." << std::endl;
         std::exit(EXIT_FAILURE);
     }
-    if (argc == 2) 
+    if (argc == 2) // Filename provided in argv[1]
     {
-        // Filename provided in argv[1]
         file = open_file(argv);
+        // Set cin to read from file
         std::cin.rdbuf(file.rdbuf());
     }
 
-    std::string line;
-    while (std::getline(std::cin, line))
-    {
-        std::cout << line << std::endl;
-    }    
+    BST bst = build_bst();
 
-    if (file.is_open())
-    {
-        file.close();
-    }
+    bst.print_preorder();
+    bst.print_inorder();
+    bst.print_postorder();
+
+    if (file.is_open()) { file.close(); };
 
     return 0;
 }
@@ -47,4 +49,21 @@ std::ifstream open_file(char* argv[])
     }
 
     return file;
+}
+
+BST build_bst()
+{
+    BST bst;
+
+    std::string line;
+    std::vector<std::string> words;
+
+    while (std::getline(std::cin, line))
+    {
+        words = split_str(line, ' ');
+
+        for(auto word : words) { bst.insert(word); };
+    }
+
+    return bst;
 }

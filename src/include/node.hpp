@@ -1,4 +1,7 @@
-#include <iostream>
+#ifndef NODE_HPP
+#define NODE_HPP
+
+#include <string>
 #include <vector>
 
 struct node
@@ -8,3 +11,7 @@ struct node
     node* left;
     node* right;
 };
+
+struct node* new_node(std::string item);
+
+#endif // !NODE_HPP
