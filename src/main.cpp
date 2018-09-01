@@ -6,27 +6,33 @@
 #include "split_str.hpp"
 
 // Prototypes
+void validate_argc(int argc);
 std::vector<std::string> get_strings(int argc, char* argv[]);
 std::ifstream open_file(char* argv[]);
 BST build_bst(std::vector<std::string> strings);
+void print_bst_traversals(BST bst);
 
 int main(int argc, char* argv[])
+{
+
+    validate_argc(argc);
+
+    std::vector<std::string> strings = get_strings(argc, argv);
+    
+    BST bst = build_bst(strings);
+
+    print_bst_traversals(bst);
+
+    return 0;
+}
+
+void validate_argc(int argc)
 {
     if (argc > 2)
     {
         std::cout << "Too many arguments." << std::endl;
         std::exit(EXIT_FAILURE);
     }
-    
-    std::vector<std::string> strings = get_strings(argc, argv);
-    
-    BST bst = build_bst(strings);
-
-    bst.print_preorder();
-    bst.print_inorder();
-    bst.print_postorder();
-
-    return 0;
 }
 
 std::vector<std::string> get_strings(int argc, char* argv[])
@@ -82,4 +88,11 @@ BST build_bst(std::vector<std::string> strings)
     for (auto str : strings) { bst.insert(str); };
 
     return bst;
+}
+
+void print_bst_traversals(BST bst)
+{
+    bst.print_preorder();
+    bst.print_inorder();
+    bst.print_postorder();
 }
