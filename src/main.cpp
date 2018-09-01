@@ -6,7 +6,7 @@
 #include "split_str.hpp"
 
 // Prototypes
-std::vector<std::string> get_strings_from_stdin(int argc, char* argv[]);
+std::vector<std::string> get_strings(int argc, char* argv[]);
 std::ifstream open_file(char* argv[]);
 BST build_bst(std::vector<std::string> strings);
 
@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
         std::exit(EXIT_FAILURE);
     }
     
-    std::vector<std::string> strings = get_strings_from_stdin(argc, argv);
+    std::vector<std::string> strings = get_strings(argc, argv);
     
     BST bst = build_bst(strings);
 
@@ -29,8 +29,9 @@ int main(int argc, char* argv[])
     return 0;
 }
 
-std::vector<std::string> get_strings_from_stdin(int argc, char* argv[])
+std::vector<std::string> get_strings(int argc, char* argv[])
 {
+    // strings will be provided by a file or by stdin
     std::vector<std::string> strings;
     std::ifstream file;
 
@@ -42,7 +43,6 @@ std::vector<std::string> get_strings_from_stdin(int argc, char* argv[])
     }
 
     std::string line;
-
     std::vector<std::string> line_strings;
 
     while (std::getline(std::cin, line))
