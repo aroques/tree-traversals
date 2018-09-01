@@ -100,9 +100,9 @@ void BST::preorder(struct Node *n, std::string indentation)
     {
         print_node(n, indentation);
 
-        preorder(n->left, indentation += indentation_amt);        
+        preorder(n->left, indentation += this->indentation_amt);        
 
-        preorder(n->right, indentation += indentation_amt);
+        preorder(n->right, indentation += this->indentation_amt);
     }
 }
 
@@ -111,11 +111,11 @@ void BST::inorder(struct Node *n, std::string indentation)
 {
     if (n != NULL)
     {
-        inorder(n->left, indentation += indentation_amt);
+        inorder(n->left, indentation += this->indentation_amt);
         
         print_node(n, indentation);
 
-        inorder(n->right, indentation += indentation_amt);
+        inorder(n->right, indentation += this->indentation_amt);
     }
 }
 
@@ -124,9 +124,9 @@ void BST::postorder(struct Node *n, std::string indentation)
 {
     if (n != NULL)
     {
-        postorder(n->left, indentation += indentation_amt);
+        postorder(n->left, indentation += this->indentation_amt);
         
-        postorder(n->right, indentation += indentation_amt);
+        postorder(n->right, indentation += this->indentation_amt);
 
         print_node(n, indentation);
     }
