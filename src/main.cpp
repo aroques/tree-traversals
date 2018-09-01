@@ -62,7 +62,7 @@ BST build_bst()
     {
         words = split_str(line, ' ');
 
-        for(auto word : words) { bst.insert(word); };
+        for (auto word : words) { bst.insert(word); };
     }
 
     return bst;
