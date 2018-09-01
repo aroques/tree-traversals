@@ -11,13 +11,11 @@ public:
     void print_preorder();
     void print_inorder();
     void print_postorder();
-    
-    BST();
-    ~BST();
 
 private:
     // Member variables
-    struct Node* root;
+    struct Node* root = NULL;
+    std::string indentation_amt = "  ";
 
     // Functions
     struct Node* insert(struct Node* node, std::string str);

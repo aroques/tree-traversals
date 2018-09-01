@@ -62,18 +62,6 @@ void BST::print_postorder()
     }
 }
 
-// Constructor
-BST::BST()
-{
-    this->root = NULL;
-}
-
-// Destructor
-BST::~BST()
-{
-
-}
-
 /*
     Private
 */
@@ -112,9 +100,9 @@ void BST::preorder(struct Node *n, std::string indentation)
     {
         print_node(n, indentation);
 
-        preorder(n->left, indentation += "  ");        
+        preorder(n->left, indentation += indentation_amt);        
 
-        preorder(n->right, indentation += "  ");
+        preorder(n->right, indentation += indentation_amt);
     }
 }
 
@@ -123,11 +111,11 @@ void BST::inorder(struct Node *n, std::string indentation)
 {
     if (n != NULL)
     {
-        inorder(n->left, indentation += "  ");
+        inorder(n->left, indentation += indentation_amt);
         
         print_node(n, indentation);
 
-        inorder(n->right, indentation += "  ");
+        inorder(n->right, indentation += indentation_amt);
     }
 }
 
@@ -136,9 +124,9 @@ void BST::postorder(struct Node *n, std::string indentation)
 {
     if (n != NULL)
     {
-        postorder(n->left, indentation += "  ");
+        postorder(n->left, indentation += indentation_amt);
         
-        postorder(n->right, indentation += "  ");
+        postorder(n->right, indentation += indentation_amt);
 
         print_node(n, indentation);
     }
@@ -147,7 +135,7 @@ void BST::postorder(struct Node *n, std::string indentation)
 void BST::print_node(struct Node* n, std::string indentation)
 {
     std::cout << indentation << n->key << std::endl;
-    for(auto val : n->values)
+    for (auto val : n->values)
     {
         std::cout << indentation << val << std::endl;
     }
