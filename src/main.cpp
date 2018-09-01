@@ -3,7 +3,7 @@
 #include <vector>
 
 #include "BST.hpp"
-#include "string_split.hpp"
+#include "split_str.hpp"
 
 // Prototypes
 std::ifstream open_file(char* argv[]);
