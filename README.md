@@ -18,7 +18,7 @@ p0 filename
 ```
 p0 < filename.fs182
 ```    
-3. Or, provide strings via the keyboard (stdin): 
+3. Or, provide strings via the keyboard (stdin) and press ctrl-d to enter the EOF character when done: 
 ```
 p0 
 ```    
