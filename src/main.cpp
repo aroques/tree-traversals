@@ -81,7 +81,12 @@ std::ifstream open_file(char* argv[])
 
 void print_bst_traversals(BST bst)
 {
+    std::cout << std::endl;
     bst.print_preorder();
+
+    std::cout << std::endl;
     bst.print_inorder();
+    
+    std::cout << std::endl;
     bst.print_postorder();
 }
