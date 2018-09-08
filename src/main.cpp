@@ -9,7 +9,7 @@
 void validate_argc(int argc);
 std::vector<std::string> get_strings(int argc, char* argv[]);
 std::ifstream open_file(char* argv[]);
-void print_bst_traversals(BST bst);
+void traverse_BST(BST& bst);
 
 int main(int argc, char* argv[])
 {
@@ -19,7 +19,7 @@ int main(int argc, char* argv[])
     
     BST bst = BST(strings);
 
-    print_bst_traversals(bst);
+    traverse_BST(bst);
 
     return 0;
 }
@@ -79,14 +79,9 @@ std::ifstream open_file(char* argv[])
     return file;
 }
 
-void print_bst_traversals(BST bst)
+void traverse_BST(BST& bst)
 {
-    std::cout << std::endl;
-    bst.print_preorder();
-
-    std::cout << std::endl;
-    bst.print_inorder();
-    
-    std::cout << std::endl;
-    bst.print_postorder();
+    bst.traversePreorder();
+    bst.traverseInorder();
+    bst.traversePostorder();
 }

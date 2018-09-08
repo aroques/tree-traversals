@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include "BST.hpp"
 
 /*
@@ -20,12 +21,11 @@ void BST::insert(std::string str)
 }
 
 // Public non-recursive print_preorder
-void BST::print_preorder()
+void BST::traversePreorder()
 {
-    std::cout << "--- BST preorder ---" << std::endl;
     if (this->root != NULL)
     {
-        print_node(this->root, "");
+        print_node(this->root, "", this->preorder_file);
 
         preorder(this->root->left, "");
         
@@ -34,30 +34,28 @@ void BST::print_preorder()
 }
 
 // Public non-recursive print_inorder
-void BST::print_inorder()
+void BST::traverseInorder()
 {
-    std::cout << "--- BST inorder ---" << std::endl;
     if (this->root != NULL)
     {
         inorder(this->root->left, "");
         
-        print_node(this->root, "");
+        print_node(this->root, "", this->inorder_file);
         
         inorder(this->root->right, "");
     }
 }
 
 // Public non-recursive print_postorder
-void BST::print_postorder()
+void BST::traversePostorder()
 {
-    std::cout << "--- BST postorder ---" << std::endl;
     if (this->root != NULL)
     {
         postorder(this->root->left, "");
 
         postorder(this->root->right, "");
         
-        print_node(this->root, "");
+        print_node(this->root, "", this->postorder_file);
         
     }
 }
@@ -66,6 +64,10 @@ void BST::print_postorder()
 BST::BST(std::vector<std::string> strings)
 {
     for (auto str : strings) { insert(str); };
+    
+    this->preorder_file.open("preorder.out");
+    this->inorder_file.open("inorder.out");
+    this->postorder_file.open("postorder.out");
 }
 
 /*
@@ -104,7 +106,7 @@ void BST::preorder(struct Node *n, std::string indentation)
 {
     if (n != NULL)
     {
-        print_node(n, indentation);
+        print_node(n, indentation, this->preorder_file);
 
         preorder(n->left, indentation += this->indentation_amt);        
 
@@ -119,7 +121,7 @@ void BST::inorder(struct Node *n, std::string indentation)
     {
         inorder(n->left, indentation += this->indentation_amt);
         
-        print_node(n, indentation);
+        print_node(n, indentation, this->inorder_file);
 
         inorder(n->right, indentation += this->indentation_amt);
     }
@@ -134,15 +136,15 @@ void BST::postorder(struct Node *n, std::string indentation)
         
         postorder(n->right, indentation += this->indentation_amt);
 
-        print_node(n, indentation);
+        print_node(n, indentation, this->postorder_file);
     }
 }
 
-void BST::print_node(struct Node* n, std::string indentation)
+void BST::print_node(struct Node* n, std::string indentation, std::ofstream& file)
 {
-    std::cout << indentation << n->key << std::endl;
+    file << indentation << n->key << std::endl;
     for (auto val : n->values)
     {
-        std::cout << indentation << val << std::endl;
+        file << indentation << val << std::endl;
     }
 }

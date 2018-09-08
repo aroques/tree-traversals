@@ -5,3 +5,4 @@ build
 .project
 .vscode
 p0
+*.out
