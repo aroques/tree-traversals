@@ -14,7 +14,7 @@ public:
     void traverseInorder();
     void traversePostorder();
 
-    BST(std::vector<std::string> strings);
+    BST(std::vector<std::string> strings, std::string output_filename);
 
 private:
     // Member variables

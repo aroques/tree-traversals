@@ -9,6 +9,7 @@
 void validate_argc(int argc);
 std::vector<std::string> get_strings(int argc, char* argv[]);
 std::ifstream open_file(char* argv[]);
+std::string get_output_filename(int argc, char* argv[]);
 void traverse_BST(BST& bst);
 
 int main(int argc, char* argv[])
@@ -16,8 +17,10 @@ int main(int argc, char* argv[])
     validate_argc(argc);
 
     std::vector<std::string> strings = get_strings(argc, argv);
-    
-    BST bst = BST(strings);
+
+    std::string output_filename = get_output_filename(argc, argv);
+
+    BST bst = BST(strings, output_filename);
 
     traverse_BST(bst);
 
@@ -77,6 +80,22 @@ std::ifstream open_file(char* argv[])
     }
 
     return file;
+}
+
+std::string get_output_filename(int argc, char* argv[])
+{
+    std::string output_filename;
+
+    if (argc == 2)
+    {
+        output_filename = argv[1];
+    }
+    else
+    {
+        output_filename = "out";
+    }
+
+    return output_filename;
 }
 
 void traverse_BST(BST& bst)

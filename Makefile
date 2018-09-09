@@ -50,7 +50,7 @@ $(BUILD_DIR)/%.cpp.o: %.cpp
 .PHONY: clean
 
 clean:
-	$(RM) -r $(BUILD_DIR) $(TARGET_EXEC) *.out
+	$(RM) -r $(BUILD_DIR) $(TARGET_EXEC) *.preorder *.inorder *.postorder
 
 -include $(DEPS)
 

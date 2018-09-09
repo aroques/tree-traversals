@@ -61,13 +61,13 @@ void BST::traversePostorder()
 }
 
 // Constructor
-BST::BST(std::vector<std::string> strings)
+BST::BST(std::vector<std::string> strings, std::string output_filename)
 {
     for (auto str : strings) { insert(str); };
     
-    this->preorder_file.open("preorder.out");
-    this->inorder_file.open("inorder.out");
-    this->postorder_file.open("postorder.out");
+    this->preorder_file.open(output_filename + ".preorder");
+    this->inorder_file.open(output_filename + ".inorder");
+    this->postorder_file.open(output_filename + ".postorder");
 }
 
 /*
