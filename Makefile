@@ -7,7 +7,7 @@
 #
 #  Source: https://spin.atomicobject.com/2016/08/26/makefile-c-projects/
 
-TARGET_EXEC ?= p0
+TARGET_EXEC ?= P0
 
 BUILD_DIR ?= ./build
 
