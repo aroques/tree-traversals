@@ -8,7 +8,7 @@
 // Prototypes
 void validate_argc(int argc);
 std::vector<std::string> get_strings(int argc, char* argv[]);
-std::ifstream open_file(char* argv[]);
+void open_file(std::ifstream& file, char* argv[]);
 std::string get_output_filename(int argc, char* argv[]);
 void traverse_BST(BST& bst);
 
@@ -44,7 +44,7 @@ std::vector<std::string> get_strings(int argc, char* argv[])
 
     if (argc == 2) // Filename provided in argv[1]
     {
-        file = open_file(argv);
+        open_file(file, argv);
         // Set cin to read from file
         std::cin.rdbuf(file.rdbuf());
     }
@@ -67,19 +67,17 @@ std::vector<std::string> get_strings(int argc, char* argv[])
     return strings;
 }
 
-std::ifstream open_file(char* argv[])
+void open_file(std::ifstream& file, char* argv[])
 {
     std::string filename = argv[1];
     filename += ".fs182";
-    std::ifstream file(filename);
+    file.open(filename);
 
     if (!file.is_open())
     {
         std::cout << "Failed to open file." << std::endl;
         std::exit(EXIT_FAILURE);
     }
-
-    return file;
 }
 
 std::string get_output_filename(int argc, char* argv[])
