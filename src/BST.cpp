@@ -21,53 +21,49 @@ void BST::insert(std::string str)
 }
 
 // Public non-recursive print_preorder
-void BST::traversePreorder()
+void BST::traversePreorder(std::ofstream& file)
 {
     if (this->root != NULL)
     {
-        print_node(this->root, "", this->preorder_file);
+        print_node(this->root, "", file);
 
-        preorder(this->root->left, "");
+        preorder(this->root->left, "", file);
         
-        preorder(this->root->right, "");
+        preorder(this->root->right, "", file);
     }
 }
 
 // Public non-recursive print_inorder
-void BST::traverseInorder()
+void BST::traverseInorder(std::ofstream& file)
 {
     if (this->root != NULL)
     {
-        inorder(this->root->left, "");
+        inorder(this->root->left, "", file);
         
-        print_node(this->root, "", this->inorder_file);
+        print_node(this->root, "", file);
         
-        inorder(this->root->right, "");
+        inorder(this->root->right, "", file);
     }
 }
 
 // Public non-recursive print_postorder
-void BST::traversePostorder()
+void BST::traversePostorder(std::ofstream& file)
 {
     if (this->root != NULL)
     {
-        postorder(this->root->left, "");
+        postorder(this->root->left, "", file);
 
-        postorder(this->root->right, "");
+        postorder(this->root->right, "", file);
         
-        print_node(this->root, "", this->postorder_file);
+        print_node(this->root, "", file);
         
     }
 }
 
 // Constructor
-BST::BST(std::vector<std::string> strings, std::string output_filename)
+BST::BST(std::vector<std::string> strings)
 {
     for (auto str : strings) { insert(str); };
-    
-    this->preorder_file.open(output_filename + ".preorder");
-    this->inorder_file.open(output_filename + ".inorder");
-    this->postorder_file.open(output_filename + ".postorder");
 }
 
 /*
@@ -102,41 +98,41 @@ struct Node* BST::insert(struct Node* node, std::string str)
 }
 
 // Private recursive preorder traversal
-void BST::preorder(struct Node *n, std::string indentation)
+void BST::preorder(struct Node *n, std::string indentation, std::ofstream& file)
 {
     if (n != NULL)
     {
-        print_node(n, indentation, this->preorder_file);
+        print_node(n, indentation, file);
 
-        preorder(n->left, indentation += this->indentation_amt);        
+        preorder(n->left, indentation += this->indentation_amt, file);        
 
-        preorder(n->right, indentation += this->indentation_amt);
+        preorder(n->right, indentation += this->indentation_amt, file);
     }
 }
 
 // Private recursive inorder traversal
-void BST::inorder(struct Node *n, std::string indentation)
+void BST::inorder(struct Node *n, std::string indentation, std::ofstream& file)
 {
     if (n != NULL)
     {
-        inorder(n->left, indentation += this->indentation_amt);
+        inorder(n->left, indentation += this->indentation_amt, file);
         
-        print_node(n, indentation, this->inorder_file);
+        print_node(n, indentation, file);
 
-        inorder(n->right, indentation += this->indentation_amt);
+        inorder(n->right, indentation += this->indentation_amt, file);
     }
 }
 
 // Private recursive postorder traversal
-void BST::postorder(struct Node *n, std::string indentation)
+void BST::postorder(struct Node *n, std::string indentation, std::ofstream& file)
 {
     if (n != NULL)
     {
-        postorder(n->left, indentation += this->indentation_amt);
+        postorder(n->left, indentation += this->indentation_amt, file);
         
-        postorder(n->right, indentation += this->indentation_amt);
+        postorder(n->right, indentation += this->indentation_amt, file);
 
-        print_node(n, indentation, this->postorder_file);
+        print_node(n, indentation, file);
     }
 }
 

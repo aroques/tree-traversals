@@ -10,28 +10,24 @@ class BST
 public:
     void insert(std::string str);
     
-    void traversePreorder();
-    void traverseInorder();
-    void traversePostorder();
+    void traversePreorder(std::ofstream& file);
+    void traverseInorder(std::ofstream& file);
+    void traversePostorder(std::ofstream& file);
 
-    BST(std::vector<std::string> strings, std::string output_filename);
+    BST(std::vector<std::string> strings);
 
 private:
     // Member variables
     struct Node* root = NULL;
-
-    std::ofstream preorder_file;
-    std::ofstream inorder_file;
-    std::ofstream postorder_file;
 
     std::string indentation_amt = "  ";
 
     // Functions
     struct Node* insert(struct Node* node, std::string str);
     
-    void preorder(struct Node *root, std::string indentation);
-    void inorder(struct Node *root, std::string indentation);
-    void postorder(struct Node *root, std::string indentation);
+    void preorder(struct Node *root, std::string indentation, std::ofstream& file);
+    void inorder(struct Node *root, std::string indentation, std::ofstream& file);
+    void postorder(struct Node *root, std::string indentation, std::ofstream& file);
     
     void print_node(struct Node* n, std::string indentation, std::ofstream& file);
 

@@ -10,7 +10,6 @@ void validate_argc(int argc);
 std::vector<std::string> get_strings(int argc, char* argv[]);
 void open_file(std::ifstream& file, char* argv[]);
 std::string get_output_filename(int argc, char* argv[]);
-void traverse_BST(BST& bst);
 
 int main(int argc, char* argv[])
 {
@@ -20,9 +19,15 @@ int main(int argc, char* argv[])
 
     std::string output_filename = get_output_filename(argc, argv);
 
-    BST bst = BST(strings, output_filename);
+    std::ofstream preorder_file(output_filename + ".preorder");
+    std::ofstream inorder_file(output_filename + ".inorder");
+    std::ofstream postorder_file(output_filename + ".postorder");
 
-    traverse_BST(bst);
+    BST bst = BST(strings);
+
+    bst.traversePreorder(preorder_file);
+    bst.traverseInorder(inorder_file);
+    bst.traversePostorder(postorder_file);
 
     return 0;
 }
@@ -94,11 +99,4 @@ std::string get_output_filename(int argc, char* argv[])
     }
 
     return output_filename;
-}
-
-void traverse_BST(BST& bst)
-{
-    bst.traversePreorder();
-    bst.traverseInorder();
-    bst.traversePostorder();
 }
